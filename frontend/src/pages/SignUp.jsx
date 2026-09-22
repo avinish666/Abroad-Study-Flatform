@@ -1,3 +1,4 @@
+```jsx
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -29,7 +30,7 @@ export default function SignUp() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/api/auth/register`, {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,11 +45,14 @@ export default function SignUp() {
       }
 
       localStorage.setItem("token", result.data.token);
-      localStorage.setItem("student", JSON.stringify(result.data.student));
+      localStorage.setItem(
+        "student",
+        JSON.stringify(result.data.student)
+      );
 
       navigate("/dashboard");
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -59,7 +63,7 @@ export default function SignUp() {
       <div className="auth-card">
         <p className="eyebrow">Waygood</p>
 
-        <h1>Create your account avi</h1>
+        <h1>Create your account</h1>
 
         <p className="auth-subtitle">
           Start your study-abroad journey.
@@ -118,3 +122,4 @@ export default function SignUp() {
     </main>
   );
 }
+```
