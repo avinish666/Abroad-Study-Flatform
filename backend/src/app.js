@@ -14,7 +14,6 @@ const notFound = require("./middleware/notFound");
 
 const app = express();
 
-const cors = require("cors");
 
 app.use(
   cors({
