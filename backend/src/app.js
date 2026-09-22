@@ -14,7 +14,17 @@ const notFound = require("./middleware/notFound");
 
 const app = express();
 
-app.use(cors());
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+       "https://abroad-study-flatform.onrender.com",
+    ].filter(Boolean),
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(morgan("dev"));
 
